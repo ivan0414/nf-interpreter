@@ -47,7 +47,7 @@ if(NO_CHIBIOS_SOURCE)
 
     #  check if Git was found, if not report to user and abort
     if(NOT GIT_EXECUTABLE)
-        message(FATAL_ERROR "error: could not find Git, make sure you have it installed.")
+        message(FATAL_ERROR "Could not find Git, make sure you have it installed.")
     endif()
 
     # ChibiOS version
@@ -271,7 +271,7 @@ if(NF_FEATURE_HAS_SDCARD OR NF_FEATURE_HAS_USB_MSD)
             GIT_SHALLOW 1   # download only the tip of the branch, not the complete history
             TIMEOUT 10
             LOG_DOWNLOAD 1
-            INSTALL_COMMAND ${CMAKE_COMMAND} -E remove ${PROJECT_BINARY_DIR}/FatFS_Source/source/ffconf.h
+            INSTALL_COMMAND "${CMAKE_COMMAND}" -E remove "${PROJECT_BINARY_DIR}/FatFS_Source/source/ffconf.h"
 
             # Disable all other steps
             CONFIGURE_COMMAND ""
@@ -302,7 +302,7 @@ if(NF_FEATURE_HAS_SDCARD OR NF_FEATURE_HAS_USB_MSD)
             FatFS
             PREFIX FatFS
             SOURCE_DIR ${CMAKE_BINARY_DIR}/FatFS_Source
-            INSTALL_COMMAND ${CMAKE_COMMAND} -E remove ${PROJECT_BINARY_DIR}/FatFS_Source/source/ffconf.h
+            INSTALL_COMMAND "${CMAKE_COMMAND}" -E remove "${PROJECT_BINARY_DIR}/FatFS_Source/source/ffconf.h"
 
             # Disable all other steps
             CONFIGURE_COMMAND ""

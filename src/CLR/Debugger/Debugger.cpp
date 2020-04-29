@@ -124,6 +124,8 @@ HRESULT CLR_DBG_Debugger::DeleteInstance()
     // free debugger
     platform_free(g_CLR_DBG_Debugger);
 
+    g_CLR_DBG_Debugger = NULL;
+
     NANOCLR_NOCLEANUP_NOLABEL();
 }
 
@@ -1026,7 +1028,7 @@ bool CLR_DBG_Debugger::Monitor_UpdateConfiguration(WP_Message* message)
         case DeviceConfigurationOption_Wireless80211Network:
         case DeviceConfigurationOption_X509CaRootBundle:
         case DeviceConfigurationOption_All:
-            if(ConfigurationManager_StoreConfigurationBlock(cmd->Data, (DeviceConfigurationOption)cmd->Configuration, cmd->BlockIndex, cmd->Length, cmd->Offset) == true)
+            if(ConfigurationManager_StoreConfigurationBlock(cmd->Data, (DeviceConfigurationOption)cmd->Configuration, cmd->BlockIndex, cmd->Length, cmd->Offset, cmd->Done) == true)
             {
                 cmdReply.ErrorCode = 0;
                 success = true;
